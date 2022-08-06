@@ -1,20 +1,49 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Animals
+﻿namespace Animals
 {
     public class Animal
     {
-        public Animal(string name, string kind, string predatororherbivore, double foodperday)
+        public Animal(string name, string kind, string predatorOrHerbivore, double foodPerDay)
         {
             Name = name;
             Kind = kind;
-            PredatorOrHerbivore = predatororherbivore;
-            FoodPerDay = foodperday;
+            PredatorOrHerbivore = predatorOrHerbivore;
+            FoodPerDay = foodPerDay;
         }
+
+        public void Eat(double weight, string typeFood)
+        {
+            if (typesFood.Contains(typeFood))
+            {
+                //Console.WriteLine($"eated = {eated}, _foodPerDay = {_foodPerDay}, weight = {weight}");
+                if (eated >= _foodPerDay)
+                    Console.WriteLine("животное есть не будет, т.к. уже сыто");
+                else
+                    eated += weight;
+                    if (eated > _foodPerDay)
+                    {
+                        eated = _foodPerDay;
+                    }
+                    IsWellFed();
+            }
+        }
+        public double eated = 0;
+        public void IsWellFed()
+        {
+            if (_foodPerDay == eated)
+            {
+                hungryStatus = "животное сыто и довольно";
+            }
+        }
+        public string hungryStatus = "животное голодное";
+        public void MakeSound()
+        {
+            Console.WriteLine(_sound);
+        }
+        public void Play()
+        {
+            Console.WriteLine($"{_kind} {Name} playing.");
+        }
+
         public string Kind
         {
             get
@@ -31,55 +60,49 @@ namespace Animals
         {
             get
             {
-                return $"Необходимый биом - {_requiredbiom}";
+                return $"Необходимый биом - {_requiredBiom}";
             }
             set
             {
-                _requiredbiom = value;
+                _requiredBiom = value;
             }
         }
-        private string _requiredbiom;
+        private string _requiredBiom;
         public string RequiredArea
         {
             get
             {
-                return $"Необходимая площадь - {_requiredarea}";
+                return $"Необходимая площадь - {_requiredArea}";
             }
             set
             {
-                _requiredarea = value;
+                _requiredArea = value;
             }
         }
-        private string _requiredarea;
-
+        private string _requiredArea;
         public List<string> TypeFood
         {
             get
             {
-                return typesfood;
-                //foreach (string food in typefood)
-                //{
-                //    Console.WriteLine(food);
-                //}
+                return typesFood;
             }
         }
-        private List<string> typesfood=new List<string>();
-
+        private List<string> typesFood = new List<string>();
         public string PredatorOrHerbivore
         {
             get
             {
-                return $"{_predatororherbivore}";
+                return $"{_predatorOrHerbivore}";
             }
             set
             {
                 if (value == "хищник" ^ value == "травоядный")
                 {
-                    _predatororherbivore = value;
+                    _predatorOrHerbivore = value;
                 }
             }
         }
-        private string _predatororherbivore;
+        private string _predatorOrHerbivore;
         public string Sound
         {
             get
@@ -92,10 +115,8 @@ namespace Animals
             }
         }
         private string _sound;
-
-        public string Name { get; set; }
-        public double FoodPerDay 
-        { 
+        public double FoodPerDay
+        {
             get
             {
                 return _foodPerDay;
@@ -103,38 +124,10 @@ namespace Animals
             set
             {
                 _foodPerDay = value;
-            } 
+            }
         }
         private static double _foodPerDay;
+        public string Name { get; set; }
         public int Age { get; set; }
-
-        public void Eat(double weight, string typefood)
-        {
-            if (typesfood.Contains(typefood))
-            {
-                eated += weight;
-                if (eated > _foodPerDay)
-                {
-                    eated = _foodPerDay;
-                }
-            }
-        }
-        public double eated = 0;
-        public void IsWellFed()
-        {
-            if (eated >= _foodPerDay)
-            {
-                _hungryStatus = $"сыт и доволен";
-            }
-        }
-        private string _hungryStatus = $"голоден";
-        public void MakeSound()
-        {
-            Console.WriteLine(_sound);
-        }
-        public void Play()
-        {
-            Console.WriteLine($"{_kind} {Name} playing.");
-        }
     }
 }

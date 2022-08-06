@@ -89,5 +89,16 @@ namespace Animals.Test
             double actual = animal.eated;
             Assert.AreEqual(expect, actual);
         }
+        [TestCase("Желтый полосатик", "тигра", "хищник", 3.5, 2, "мясо", "животное голодное")]
+        [TestCase("Зеленый головастик", "крокодил", "хищник", 5, 13, "мясо", "животное сыто и довольно")]
+        [TestCase("Зеленый головастик", "крокодил", "хищник", 5, 13, "сено", "животное голодное")]
+        public void IsWellFedTest(string name, string kind, string pred_herb, double food_weight, double food, string type_food, string expect)
+        {
+            Animal animal = new Animal(name, kind, pred_herb, food_weight);
+            animal.TypeFood.Add("мясо");
+            animal.Eat(food, type_food);
+            string actual = animal.hungryStatus;
+            Assert.AreEqual(expect, actual);
+        }
     }
 }
