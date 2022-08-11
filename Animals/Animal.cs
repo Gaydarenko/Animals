@@ -2,6 +2,15 @@
 {
     public class Animal
     {
+        private static double _foodPerDay;
+        private string _kind;
+        private string _requiredBiom;
+        private string _requiredArea;
+        private string _predatorOrHerbivore;
+        private List<string> typesFood = new List<string>();
+        private string _sound;
+        public double Eated = 0;
+        public string HungryStatus = "животное голодное";
         public Animal(string name, string kind, string predatorOrHerbivore, double foodPerDay)
         {
             Name = name;
@@ -9,32 +18,28 @@
             PredatorOrHerbivore = predatorOrHerbivore;
             FoodPerDay = foodPerDay;
         }
-
         public void Eat(double weight, string typeFood)
         {
             if (typesFood.Contains(typeFood))
             {
-                //Console.WriteLine($"eated = {eated}, _foodPerDay = {_foodPerDay}, weight = {weight}");
-                if (eated >= _foodPerDay)
+                if (Eated >= _foodPerDay)
                     Console.WriteLine("животное есть не будет, т.к. уже сыто");
                 else
-                    eated += weight;
-                    if (eated > _foodPerDay)
+                    Eated += weight;
+                    if (Eated > _foodPerDay)
                     {
-                        eated = _foodPerDay;
+                        Eated = _foodPerDay;
                     }
                     IsWellFed();
             }
         }
-        public double eated = 0;
         public void IsWellFed()
         {
-            if (_foodPerDay == eated)
+            if (_foodPerDay == Eated)
             {
-                hungryStatus = "животное сыто и довольно";
+                HungryStatus = "животное сыто и довольно";
             }
         }
-        public string hungryStatus = "животное голодное";
         public void MakeSound()
         {
             Console.WriteLine(_sound);
@@ -43,7 +48,6 @@
         {
             Console.WriteLine($"{_kind} {Name} playing.");
         }
-
         public string Kind
         {
             get
@@ -55,7 +59,6 @@
                 _kind = value;
             }
         }
-        private string _kind;
         public string RequiredBiom
         {
             get
@@ -67,7 +70,6 @@
                 _requiredBiom = value;
             }
         }
-        private string _requiredBiom;
         public string RequiredArea
         {
             get
@@ -79,7 +81,6 @@
                 _requiredArea = value;
             }
         }
-        private string _requiredArea;
         public List<string> TypeFood
         {
             get
@@ -87,7 +88,6 @@
                 return typesFood;
             }
         }
-        private List<string> typesFood = new List<string>();
         public string PredatorOrHerbivore
         {
             get
@@ -102,7 +102,6 @@
                 }
             }
         }
-        private string _predatorOrHerbivore;
         public string Sound
         {
             get
@@ -114,7 +113,6 @@
                 _sound = value;
             }
         }
-        private string _sound;
         public double FoodPerDay
         {
             get
@@ -126,7 +124,6 @@
                 _foodPerDay = value;
             }
         }
-        private static double _foodPerDay;
         public string Name { get; set; }
         public int Age { get; set; }
     }

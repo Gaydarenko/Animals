@@ -31,14 +31,14 @@ foreach (string s in animal1.TypeFood)
 {
     Console.WriteLine(s);
 }
-Console.WriteLine(animal1.eated);
+Console.WriteLine(animal1.Eated);
 animal1.Eat(2, "meet");
-Console.WriteLine(animal1.eated);
+Console.WriteLine(animal1.Eated);
 animal1.Eat(2.7, "meet");
-Console.WriteLine(animal1.eated);
+Console.WriteLine(animal1.Eated);
 animal1.Eat(7, "meet");
-Console.WriteLine(animal1.eated);
+Console.WriteLine(animal1.Eated);
 //animal1.IsWellFed();
-Console.WriteLine(animal1.hungryStatus);
+Console.WriteLine(animal1.HungryStatus);
 //Console.WriteLine(animal1.TypeFood.);
 //string[] = [] { "qq", "ww", "ee"}

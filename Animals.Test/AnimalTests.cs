@@ -86,7 +86,7 @@ namespace Animals.Test
             Animal animal = new Animal(name, kind, pred_herb, food_weight);
             animal.TypeFood.Add("мясо");
             animal.Eat(food, type_food);
-            double actual = animal.eated;
+            double actual = animal.Eated;
             Assert.AreEqual(expect, actual);
         }
         [TestCase("Желтый полосатик", "тигра", "хищник", 3.5, 2, "мясо", "животное голодное")]
@@ -97,7 +97,7 @@ namespace Animals.Test
             Animal animal = new Animal(name, kind, pred_herb, food_weight);
             animal.TypeFood.Add("мясо");
             animal.Eat(food, type_food);
-            string actual = animal.hungryStatus;
+            string actual = animal.HungryStatus;
             Assert.AreEqual(expect, actual);
         }
     }
